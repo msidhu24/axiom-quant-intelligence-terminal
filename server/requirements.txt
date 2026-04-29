@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+pydantic
+yfinance>=0.2.40
+pandas
+numpy
+numpy-financial
+vaderSentiment
+tweepy
+newsdataapi
+tavily-python
+python-dotenv
+fredapi
+requests
+beautifulsoup4
+httpx
