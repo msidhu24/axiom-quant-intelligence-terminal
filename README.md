@@ -35,15 +35,60 @@ npm run dev
 
 ## AI Usage Disclosure & DRIVER Workflow
 
-This project was built using pair-programming with an advanced AI Agent (Google Gemini / Antigravity).
+This project was built using pair-programming with an advanced AI Agent (Google Gemini / Antigravity). The DRIVER framework was applied throughout the development process to ensure human-led, AI-assisted development.
 
-### Full DRIVER Workflow Implementation:
+---
 
-- **`Define` (Tool: Antigravity Agent)**: I defined the initial system architecture, the glassmorphic Apple-inspired design language, and the scope of the quantitative logic. I provided the agent with my previous "Sentify" legacy code and set strict parameters for merging fundamental DCF and NLP sentiment data.
-- **`Represent` (Tool: Agent Planning Mode)**: I represented the data pipeline by mapping out how the YFinance API, NewsData API, and X (Twitter) API would flow into the backend FastAPI server, get processed by the `AxiomEngine`, and then map to the React frontend UI state.
-- **`Implement` (Tool: Antigravity Agent)**: I implemented the core infrastructure, establishing the `AxiomEngine` and the frontend `StockAnalyzer.jsx` dashboard. I used the AI to scaffold the React components and write the Python FastAPI boilerplate.
-- **`Validate` (Tool: Terminal & Localhost)**: I validated the data integrity by manually verifying the Alpha Score algorithms, cross-referencing the dynamic "Conviction List" against real market trends, and testing that extreme parameter changes via the UI sliders properly normalized the math in the backend.
-- **`Evolve` (Tool: Antigravity Agent & IDE)**: During development, I actively evolved the project features. When the initial sentiment engine was just a price-momentum proxy, I prompted the AI to evolve the architecture by installing the `vaderSentiment` NLP module and creating adjustable UI sliders to dynamically weight Professional News vs. Social Media.
-- **`Reflect` (Tool: Backend Terminal & Agent Debugging)**: I used reflection workflows to troubleshoot live data errors. For example, when the Volatility Playbook failed to identify Apple's upcoming earnings, I prompted the AI to reflect on the failure. Together, we analyzed the python terminal output and realized the `yfinance` library had fundamentally changed its data structure from a Pandas DataFrame to a standard Dictionary, allowing us to fix the parser.
+### D — DISCOVER & DEFINE
+> *Understand the problem thoroughly, define requirements, and plan the approach before engaging AI tools.*
 
-**Disclosure Statement**: AI was extensively utilized for API integration, UI component scaffolding, and automated syntax debugging. However, all quantitative logic weighting choices, architectural decisions, and the overarching financial thesis (combining DCF with live NLP) were strictly user-directed.
+**How I applied it:** Before touching a single line of code, I mapped out the full scope of the Axiom platform. I defined the core problem — that existing tools treat DCF and sentiment as separate silos — and specified requirements: a live FastAPI backend, a VADER NLP engine for scoring news and social media, adjustable alpha weight sliders, an Insider "Whale Watch" tracker via SEC Form 4 filings, and a real-time Conviction List on the dashboard. I ported my prior "Sentify" project as a knowledge reference and gave the AI precise architectural constraints before it wrote any code.
+
+---
+
+### R — REPRESENT
+> *Visualize the solution structure, create frameworks, and identify which tasks benefit from AI vs. require human judgment.*
+
+**How I applied it:** I mapped the full data pipeline architecture: `YFinance API → DCF Engine → NewsData/Twitter → VADER NLP → AxiomEngine → Alpha Score → React Dashboard`. I identified which tasks required my financial judgment (e.g., setting the WACC range, defining what constitutes a "Value Gap" signal, choosing the Kelly Criterion for position sizing) versus which could be AI-scaffolded (e.g., React component boilerplate, FastAPI route setup, CSS animations).
+
+---
+
+### I — IMPLEMENT
+> *Execute the solution with AI collaboration, maintaining human oversight and direction throughout.*
+
+**How I applied it:** I implemented the platform in iterative sprints, always acting as the director. I prompted the AI to build the `AxiomEngine`, `StockAnalyzer.jsx`, `Dashboard.jsx`, the ETF recursive scanner, and the VADER sentiment pipeline. At each step, I reviewed the code, corrected logical errors (such as the hardcoded news category filter that was blocking article throughput), and re-directed the agent when outputs didn't match my financial intent.
+
+---
+
+### V — VALIDATE
+> *Verify all outputs against financial principles, cross-reference data sources, and apply business logic sanity tests.*
+
+**How I applied it:** I manually validated the Alpha Score math by testing extreme parameter values through the engine calibration sliders. I cross-referenced the DCF intrinsic value outputs against known analyst targets for AAPL, NVDA, and MSFT. I also validated the Conviction List by confirming that stocks with high DCF scores and low momentum were correctly being flagged as "Value Gap" signals, and that the Insider Alignment multiplier (15% boost) was only applied when genuine SEC Form 4 cluster buying was detected.
+
+---
+
+### E — EVOLVE
+> *Refine and optimize the solution based on validation findings and changing requirements.*
+
+**How I applied it:** After validating the initial build, I evolved the platform in several critical ways. I added the Source Weighting (News vs. Social) NLP slider after realizing the flat sentiment score was ignoring source credibility. I expanded the Volatility Playbook from 3 hardcoded tickers to a live 20-ticker scan with real earnings calendar data. I replaced the static mock Conviction List with a live background-scanning endpoint that dynamically ranks best buys using real-time market logic.
+
+---
+
+### R — REFLECT
+> *Document the process, capture learnings, and create reusable knowledge for future applications.*
+
+**How I applied it:** Throughout development I reflected on failures and turned them into improvements. The most significant reflection was diagnosing the Volatility Playbook crash: when Apple's earnings date wasn't showing, I prompted the AI to reflect on the Python terminal error, and we discovered that `yfinance` had silently changed its `.calendar` return type from a Pandas DataFrame to a Python Dictionary — a breaking change with no deprecation warning. Reflecting on this taught me to always validate third-party API return types rather than assuming stability.
+
+---
+
+**Disclosure Statement:** **AI Disclosure**: The AI handled API integration, syntax debugging, and UI scaffolding. However, all quantitative logic, position sizing algorithms, and the fundamental thesis were strictly user-directed.
+
+---
+
+## ⚠️ Disclaimer: Not Financial Advice
+
+**This project is for educational and academic purposes only.** 
+
+The Axiom Quant Intelligence Terminal, including its Alpha Scores, Conviction Lists, Shadow Prices, and Kelly Criterion position sizing models, **does not constitute financial, investment, or legal advice.** 
+
+The algorithmic signals and sentiment metrics generated by this platform are based on hypothetical, generalized mathematical models and highly volatile third-party data sources (e.g., social media sentiment, scraped earnings dates). They are inherently flawed and should not be used to make real-world trading decisions. Any capital deployed in financial markets is at risk of complete loss. The creator of this project is not a licensed financial advisor and assumes no liability for any financial losses incurred through the use of this software.
